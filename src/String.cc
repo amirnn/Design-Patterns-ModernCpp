@@ -15,7 +15,7 @@ int String::readFromStream(std::istream& stream){
         throw std::runtime_error("Reading data failed.");
 }
 
-size_t String::length() const {
+size_t String::getLength() const {
     return value.size();
 }
 
@@ -24,6 +24,7 @@ std::vector<string> String::split(const string& delimiter) const {
     boost::split(parts, value, boost::is_any_of(delimiter), boost::token_compress_on);
     return parts;
 }
-string String::getLowerCase() const {
-    return boost::to_lower_copy(value);
+String String::getLowerCase() const {
+    // Direct Initalization or we can use Explicit Conversion.
+    return String(boost::to_lower_copy(value));
 };
